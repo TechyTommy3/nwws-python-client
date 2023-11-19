@@ -7,13 +7,13 @@ import logging
 import json
 import time
 import ssl
-import slixmpp
+import sleekxmpp
 from datetime import datetime
 from xml.dom import minidom
 
 # Python versions before 3.0 do not use UTF-8 encoding
 # by default. To ensure that Unicode is handled properly
-# throughout slixmpp, we will set the default encoding
+# throughout sleekxmpp, we will set the default encoding
 # ourselves to UTF-8.
 if sys.version_info < (3, 0):
     reload(sys)
@@ -29,16 +29,16 @@ def signal_handler(signal, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-class MUCBot(slixmpp.ClientXMPP):
+class MUCBot(sleekxmpp.ClientXMPP):
 
     """
-    A simple slixmpp bot that will greets those
+    A simple sleekxmpp bot that will greets those
     who enter the room, and acknowledge any messages
     that mentions the bot's nickname.
     """
 
     def __init__(self, jid, password, room, nick):
-        slixmpp.ClientXMPP.__init__(self, jid, password)
+        sleekxmpp.ClientXMPP.__init__(self, jid, password)
 
         self.room = room
         self.nick = nick

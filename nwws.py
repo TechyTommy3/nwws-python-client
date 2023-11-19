@@ -23,7 +23,7 @@ else:
 
 def signal_handler(signal, frame):
     print('Caught Ctrl+C. Exiting.')
-    file = open('/tmp/exit_nwws', 'w')
+    file = open('%tmp%\exit_nwws', 'w')
     file.close()
     sys.exit(0)
 
@@ -204,8 +204,8 @@ if __name__ == '__main__':
             # if xmpp.connect(('talk.google.com', 5222)):
             #     ...
             xmpp.process(block=True)
-            if os.path.isfile('/tmp/exit_nwws'):
-                os.remove('/tmp/exit_nwws')
+            if os.path.isfile('%tmp%\exit_nwws'):
+                os.remove('%tmp%\exit_nwws')
                 sys.exit(1)
         else:
             print("Unable to connect.")

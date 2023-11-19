@@ -65,7 +65,7 @@ The `archivedir` variable is optional and specifies the directory on your system
 
 The `pan_run` variable is also optional and specifies the path to a script or program that you'd like to run on product arrival. The client automatically passes the full path to the product to the supplied script or program. If `archivedir` is not specified, the product is temporarily saved to your `/tmp/` directory and then removed after the program or script is run.
 
-The `pan_run_log` variable is an optional variable to specify the log file where messages are run when the `pan_run` program script is run. Otherwise, the messages will be send to /dev/null.
+The `pan_run_log` variable is an optional variable to specify the log file where messages are run when the `pan_run` program script is run. Otherwise, the messages will be send to NUL.
 
 The `retry` variable specifies whether you would like to retry the connection upon disconnection from the server. You'll likely want to set this to `true`.
 
@@ -105,7 +105,7 @@ The above variables have the following meaning:
 The script will continue to run, downloading products to your system. If products are being archved, they will eventually fill up your filesystem and you'll likely want to clear out old products. For example, to automatically remove products older than a week, insert the following line into your crontab:
 
 ```
-0 0 * * *   /usr/bin/find [archivedir] -type f -mtime +7 -delete >/dev/null
+0 0 * * *   /usr/bin/find [archivedir] -type f -mtime +7 -delete >NUL
 ```
 
 You will want to replace [archivedir] with the path to the product directory.

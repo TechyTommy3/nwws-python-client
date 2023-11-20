@@ -141,7 +141,7 @@ class MUCBot(sleekxmpp.ClientXMPP):
             # Run a command using the file as the parameter (if pan_run is defined in the config file)
             if 'pan_run' in config:
                 try:
-                    os.system(config['pan_run']+' '+pathtofile+' >NUL')
+                    os.system(config['pan_run']+' '+pathtofile+'')
                 except OSError as e:
                     print("ERROR\t Execution failed: " + e, file=sys.stderr)
 
